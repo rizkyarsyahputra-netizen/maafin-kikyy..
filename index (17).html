@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Sayang</title>
+
+<style>
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Arial, sans-serif;
+}
+
+body{
+ min-height:100vh;
+ overflow:hidden;
+ color:white;
+ background:
+ linear-gradient(rgba(40,70,160,.45),rgba(20,30,90,.55)),
+ url('bg.jpg') center/cover no-repeat;
+}
+
+canvas{
+ position:fixed;
+ inset:0;
+ z-index:0;
+}
+
+.screen{
+ position:absolute;
+ inset:0;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:20px;
+ z-index:3;
+}
+
+.hidden{
+ display:none !important;
+}
+
+.glass{
+ width:min(92%,820px);
+ padding:38px;
+ border-radius:30px;
+ text-align:center;
+ background:rgba(255,255,255,.16);
+ backdrop-filter:blur(24px);
+ border:1px solid rgba(255,255,255,.35);
+ box-shadow:0 20px 60px rgba(0,0,0,.22);
+ animation:fade .8s ease;
+}
+
+h1{
+ font-size:2rem;
+ margin-bottom:20px;
+}
+
+h2{
+ margin-bottom:20px;
+}
+
+p{
+ line-height:1.9;
+ font-size:1.05rem;
+ white-space:pre-line;
+}
+
+button{
+ border:none;
+ padding:14px 24px;
+ border-radius:999px;
+ background:white;
+ color:#4b84ff;
+ font-weight:bold;
+ margin:12px 6px 0;
+ cursor:pointer;
+ transition:.25s;
+}
+
+button:hover{
+ transform:scale(1.04);
+}
+
+input{
+ width:100%;
+ padding:16px;
+ border:none;
+ outline:none;
+ border-radius:18px;
+ margin-top:20px;
+ text-align:center;
+ font-size:18px;
+}
+
+.page{
+ display:none;
+}
+
+.page.active{
+ display:block;
+ animation:fade .7s ease;
+}
+
+.typewriter{
+ min-height:260px;
+}
+
+.small{
+ margin-top:14px;
+ opacity:.8;
+ font-size:14px;
+}
+
+.sylus{
+ position:fixed;
+ right:15px;
+ bottom:15px;
+ width:95px;
+ opacity:.35;
+ z-index:2;
+}
+
+@keyframes fade{
+ from{
+   opacity:0;
+   transform:translateY(18px);
+ }
+ to{
+   opacity:1;
+   transform:translateY(0);
+ }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<img src="sylus.jpeg" class="sylus">
+
+<audio id="bgm" loop>
+ <source src="maaff.mp3" type="audio/mpeg">
+</audio>
+
+<div id="loginScreen" class="screen">
+ <div class="glass">
+   <h1>💙</h1>
+   <p>
+Web ini dibuat khusus
+untuk seseorang yang sangat berarti.
+
+Masukkan tanggal
+yang berarti bagi kita.
+   </p>
+
+   <input id="passwordInput" placeholder="contoh: 08042026">
+   <button onclick="checkPassword()">Masuk</button>
+   <button onclick="playMusic()">Play Music</button>
+   <p id="errorText" class="small"></p>
+ </div>
+</div>
+
+<div id="mainApp" class="screen hidden">
+<div class="glass">
+
+<div class="page active">
+<h1>Untuk Sayang</h1>
+<p class="typewriter" data-text="
+Kalau sayanggg membuka ini,
+maaciii yaa sayangg 🤍
+
+Aku cuma berharap...
+
+untuk beberapa menit,
+sayangg mau membaca ini
+sampai selesai.
+"></p>
+
+<button onclick="nextPage()">Lanjut</button>
+</div>
+
+
+<div class="page">
+<h2>Hal yang Tak Pernah kikyy ceritakan</h2>
+<p class="typewriter" data-text="
+Adaa banyaaa hal
+ygg selamaa iniiii 
+tidaa pernaa bisaaa
+kikyy jelaskan dengan benar...
+
+Saat kabar sayangg kabar ssyangg mulai berkurang dunia kikyy kayaa berhenti sejenakk.. mungkinn dunia tetap berjalan seperti biasa.. di saat sayangg tidaa ngabarinn
+
+Tapi tidaa dengan pikiran kikyy.. Semakin sunyi keadaan nyaa.. semakin berisik pikiran kiky... kikyy mintaa maaff yasa..
+"></p>
+
+<button onclick="nextPage()">Lanjut</button>
+</div>
+
+
+<div class="page">
+<h2>Kesalahan kikyy</h2>
+<p class="typewriter" data-text="
+Sekarang kikyy ngertii..
+
+masalaa kitaa bukann cumaa soal gamee... tapiii Masalaa terbesar kita
+adalaa diri kikyy sendiri
+saat takut kehilangan...
+
+kikyyy panik.
+kikyy  cemas.
+kikyy overthinking.
+dann kikyy yakin ssyang juga ngerasain hal yg samaa.. ssyangg jugaa bebass mau cekk kikyy kayaa gimana supaya ssyangg tidaa ovtan lagi atau cemass lagiii.. Dan dalam kepanikan itu, kikyyy mengambil keputusan ygg salah🥺 kiky mintaa maaff..🥺🤍
+"></p>
+
+<button onclick="nextPage()">Lanjut</button>
+</div>
+
+
+<div class="page">
+<h2>Ironisnya...</h2>
+<p class="typewriter" data-text="
+Hal yang paling
+kikyyy takutkan kehilangan,
+
+justru perlahan dorong kikyy menjauh
+dengan tangan kikyy sendiri...
+
+Dan itu...
+sangat menyakitkan.. tapi kikyy gamau ngerasain paling sakitt.. karna kikyy tau sayang pasti kecewa sama kikyy.. kikyy terlalu di kendalikan oleh pikiran kikyy..
+"></p>
+
+<button onclick="nextPage()">Lanjut</button>
+</div>
+
+<div class="page">
+<h2>Tentang Kamu</h2>
+<p class="typewriter" data-text="
+kikyyy jugaa sadar
+betapa capee nyaa bayii mungill kikyyy..
+
+Selamaa iniii
+sayanggg bukann cumaa 
+seseorang ygg kikyy sayang.
+
+sayangg juga jadi orang
+ygg terus:
+
+mengingatkan kikyy,
+menenangkan kikyyy,
+menahan kikyyy,
+dan melarang kikyy apa yg menurut sayang salahh..
+kikyy berterimakasih bangedd ssyangg udaa didikk kikyyy, kikyy senengg sayangg ngaturr kikyy dan menjaga hubungan ini saat kikyy sendiri
+sering goyaaa..
+"></p>
+
+<button onclick="nextPage()">Lanjut</button>
+</div>
+
+
+<div class="page">
+<h2>Kenangan Kita</h2>
+<p class="typewriter" data-text="
+kikyy jugaa ke ingat waktuu sayangg pertamaa kalii manggil aku kikyyy hihii, wakru itu akuu lagii curhat tentang keluh kesahh aku dan di situ aku juga lakuin kesalahan.. tapi karena aku bercerita kitaa damaii hihii laluu terbit laa kikyyy, namaa seorang innerchilled yg selaluu kikyy ceeitain ke sayangg ehee🤍 kikyy senengg sayangg mengerti innerchilled kikyy.. semenjak ituu kikyy jsdi bocil yg bawel ehee.. bocil yg butuh kasi sayang dan didikan hihii 🤍
+"></p>
+
+<button onclick="nextPage()">Lanjut</button>
+</div>
+
+
+<div class="page">
+<h2>Terakhir...</h2>
+<p class="typewriter" data-text="
+Web ini tidaa di buatt untuk membuat semuannya balik kaya dulu lagii walau kikyy inginn.. tapi mungkin tidaa bissa.. yg bisa kikyy lakuin buat suasana baru tanpa kesalahan lagii.. 
+
+kikyy cuma ingin
+meminta maaf.
+
+Untuk luka
+ygg kikyy bustt.. kikyy bakal sembuhin kikyy bakal nurut dan untuk lelah yg sayang pendemm.. kikyy benerr benerr mintaa maaff 😭 kikyy bakal lakuin semua apa yg sayangg suru agar di maafinn..
+"></p>
+
+<button onclick="nextPage()">Lanjut</button>
+</div>
+
+
+<div class="page">
+<h2>Satu Hal Lagi</h2>
+<p class="typewriter" data-text="
+Kalau suatu hari
+sayanggg masiii mau
+memberi kesempatan buat kikyyy...
+
+kikhyy ingin datang
+bukan hanyaa
+dengan kata maafff..
+
+Tapi dengan
+versi diri kikyy
+yang lebih sadarrr
+lebih tenanggg
+dan lebih bertanggung jawabbb 
+kikyy tidaa nakal lagiii..
+"></p>
+
+<button onclick="showEnding()">Lanjut</button>
+</div>
+
+
+<div id="endingChoices" class="page">
+<h2>Terima kasih 🤍</h2>
+
+<p>
+Apa pun pilihan sayangg...
+kikyy menghormatinya.
+</p>
+
+<button onclick="needTime()">Aku masih butuh waktu</button>
+<button onclick="goWhatsapp()">Aku mau bicara dengan kikyyy</button>
+</div>
+
+
+<div id="waitPage" class="page">
+<h2>Tidak apa-apa</h2>
+<p>
+kikyy akan
+menghormati waktu sayangg..
+
+kikyy tidaaa
+akan memaksa..
+</p>
+</div>
+
+</div>
+</div>
+
+<script>
+const password = "08042026";
+const pages = document.querySelectorAll(".page");
+let currentPage = 0;
+let typing = false;
+
+function playMusic(){
+ document.getElementById("bgm").play();
+}
+
+function checkPassword(){
+ const input = document.getElementById("passwordInput").value.trim();
+ const error = document.getElementById("errorText");
+
+ if(input === password){
+   document.getElementById("loginScreen").classList.add("hidden");
+   document.getElementById("mainApp").classList.remove("hidden");
+   startTypewriter(currentPage);
+ } else {
+   error.textContent = "Tanggalnya belum tepat 💙";
+ }
+}
+
+function nextPage(){
+ if(typing) return;
+
+ pages[currentPage].classList.remove("active");
+ currentPage++;
+
+ if(currentPage < pages.length){
+   pages[currentPage].classList.add("active");
+   startTypewriter(currentPage);
+ }
+}
+
+function showEnding(){
+ pages[currentPage].classList.remove("active");
+ document.getElementById("endingChoices").classList.add("active");
+}
+
+function needTime(){
+ document.getElementById("endingChoices").classList.remove("active");
+ document.getElementById("waitPage").classList.add("active");
+}
+
+function goWhatsapp(){
+ alert("Terima kasih sudah membaca sampai akhir 🤍");
+
+ setTimeout(()=>{
+   window.location.href =
+   "https://wa.me/6287710591220?text=kikyy%20berharap%20kikyy%20dimaafin...%20aku%20mau%20cerita";
+ },700);
+}
+
+function startTypewriter(index){
+ const el = pages[index].querySelector(".typewriter");
+ if(!el) return;
+
+ const text = el.dataset.text.trim();
+ el.textContent = "";
+
+ let i = 0;
+ typing = true;
+
+ const interval = setInterval(()=>{
+   el.textContent += text.charAt(i);
+   i++;
+
+   if(i >= text.length){
+     clearInterval(interval);
+     typing = false;
+   }
+ },28);
+}
+
+/* PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<60;i++){
+ particles.push({
+   x: Math.random()*canvas.width,
+   y: Math.random()*canvas.height,
+   r: Math.random()*3+1,
+   dx:(Math.random()-0.5)*0.4,
+   dy:(Math.random()-0.5)*0.4
+ });
+}
+
+function animate(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ particles.forEach(p=>{
+   ctx.beginPath();
+   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+   ctx.fillStyle="rgba(255,255,255,0.45)";
+   ctx.fill();
+
+   p.x += p.dx;
+   p.y += p.dy;
+
+   if(p.x < 0 || p.x > canvas.width) p.dx *= -1;
+   if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
+ });
+
+ requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener("resize",()=>{
+ canvas.width = window.innerWidth;
+ canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
